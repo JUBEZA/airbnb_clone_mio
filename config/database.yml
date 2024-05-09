@@ -1,0 +1,21 @@
+default: &default
+  adapter: postgresql
+  encoding: unicode
+  pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
+  username: your_username
+  password: your_password
+  host: localhost
+
+development:
+  <<: *default
+  database: airbnb_clone_development
+
+test:
+  <<: *default
+  database: airbnb_clone_test
+
+production:
+  <<: *default
+  database: airbnb_clone_production
+  username: airbnb_clone
+  password: <%= ENV['AIRBNB_CLONE_DATABASE_PASSWORD'] %>
